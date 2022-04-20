@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Најави се{% endblock %}
+
+{% block content %}
+<div class="login-outer-div">
+    <!-- <div class="title-div" id="title-login">
+        <p id="title-1">Speech</p><p id="title-2">AI</p>
+    </div> -->
+    
+    <div class="form-div" id="form-login">
+        <form method="POST" autocomplete="off">
+            {{ form.hidden_tag() }}
+            {{ form.email_login.label(class="form-label", id="uname-label") }} {{ form.email_login(class="form-control input_fields") }}
+            <span class="validation_error">{{ ', '.join(form.email_login.errors) }}</span>
+            {{ form.password_login.label(class="form-label",  id="pass-label") }} {{ form.password_login(class="form-control input_fields") }}
+            <span class="validation_error">{{ ', '.join(form.password_login.errors) }}</span>
+            <div class="reset-password">
+                <a class="form-label" href="{{ url_for('auth.password_reset_request') }}">ЗАБОРАВЕНА ЛОЗИНКА?</a>
+            </div>
+            <div class="form-check">
+                {{ form.remember_me(class="form-check-input", id="remember-me", type="checkbox") }} {{ form.remember_me.label(class="form-check-label",  id="rememberme-label", for="remember-me") }}
+            </div>
+            {{ form.login_btn(class="btn btn-secondary", id="btn-submit-login") }}
+        </form>
+    </div>
+</div>
+{% endblock %}

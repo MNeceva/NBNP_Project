@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрирај се{% endblock %}
+
+{% block content %}
+<div class="register-outer-div">
+    <!-- <div class="title-div" id="title-register">
+        <p id="title-1">Speech</p><p id="title-2">AI</p>
+    </div> -->
+    
+    <div class="form-div" id="form-register">
+        <form action="" method="post" autocomplete="off">
+            {{ form.hidden_tag() }}
+            {{ form.firstname.label(class="form-label", id="firstname-label") }} {{ form.firstname(class="form-control input_fields") }} <span class="validation_error">{{ ', '.join(form.firstname.errors) }}</span><br>
+            {{ form.lastname.label(class="form-label", id="lastname-label") }} {{ form.lastname(class="form-control input_fields") }} <span class="validation_error">{{ ', '.join(form.lastname.errors) }}</span><br>
+            {{ form.username.label(class="form-label", id="username-label") }} {{ form.username(class="form-control input_fields") }} <span class="validation_error">{{ ', '.join(form.username.errors) }}</span><br>
+            {{ form.email.label(class="form-label", id="email-label") }} {{ form.email(class="form-control input_fields") }} <span class="validation_error">{{ ', '.join(form.email.errors) }}</span><br>
+            {{ form.password.label(class="form-label",  id="password-label") }} {{ form.password(class="form-control input_fields") }} <span class="validation_error">{{ ', '.join(form.password.errors) }}</span><br>
+            {{ form.birth_date.label(class="form-label", id="birth-date-label") }} {{ form.birth_date(class="form-control input_fields") }} <span class="validation_error">{{ ', '.join(form.birth_date.errors) }}</span><br>
+            {{ form.gender.label(class="form-label", id="gender-label") }} {{ form.gender(class="form-control input_fields") }} <span class="validation_error">{{ ', '.join(form.gender.errors) }}</span>
+            {{ form.register_btn(class="btn btn-secondary", id="btn-submit-register") }}
+        </form>
+    </div>
+</div>
+{% endblock %}

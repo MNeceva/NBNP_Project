@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Кориснички профил{% endblock %}
+
+{% block content %}
+<div class="profile-outer-div">
+    <form action="{{ url_for('main.upload_files') }}" class="form-div" id="profile-div" action="" method="POST" enctype="multipart/form-data" autocomplete="off">
+        {{ form.hidden_tag() }}
+        {{ form.audio_file(class="custom-file-input", id="audio-file") }}
+        {{ form.audio_file.label(class="custom-file-label", for="audio-file") }}
+        {{ form.upload(class="btn btn-secondary", id="btn-upload") }}
+
+    </form>
+</div>
+
+<div class="table-div">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Аудио запис</th>
+                <th scope="col">Големина</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for file in files %}
+            <tr>
+                <td>{{ file.name }}</td>
+                <td>{{ file.size }} MB</td>
+                
+                <td>
+                    <form action="{{ url_for('main.download_file') }}">
+                    <input id="file_id" name="file_id"
+                    type="hidden" value="{{ file.name }}">
+                    <button type="submit" name="download" 
+                    class="btn btn-light" id="btn-download" value="{{ file.name }}"
+                    formmethod="post">Превземи запис</button>
+                   </form>
+                </td>
+
+                <td>
+                    <form action="{{ url_for('main.delete_file') }}">
+                    <input id="file_id" name="file_id"
+                    type="hidden" value="{{ file.name }}">
+                    <button type="submit" name="delete" 
+                        class="btn btn-light" id="btn-delete" value="{{ file.name }}"
+                        formmethod="post">Избриши запис</button>
+                   </form>
+                </td>
+               
+                
+                <!-- <td><a href="{{ url_for('main.download_file') }}"><button type="submit" name="download" 
+                    class="btn btn-light" id="btn-download" value="{{ file.name }}"
+                    formmethod="post">Превземи запис</button></a></td>
+                <td><a href="{{ url_for('main.delete_file') }}"><button type="submit" name="delete" 
+                    class="btn btn-light" id="btn-delete" value="{{ file.name }}"
+                    formmethod="post">Избриши запис</button></a></td> -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+
+{% endblock %}

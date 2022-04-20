@@ -1,0 +1,8 @@
+<p>Почитуван/а {{ user.username }},</p>
+<p>Добредојде во светот на <b>SpeechAI</b>!</p>
+<p>За да го потврдиш креирањето на твојот кориснички профил <a href="{{ url_for('auth.confirm', token=token, _external=True) }}">кликни тука</a>.</p>
+<p>Или, внеси го овој линк во твојот пребарувач:</p>
+<p>{{ url_for('auth.confirm', token=token, _external=True) }}</p>
+<p>Со почит,</p>
+<p>Тимот на SpeechAI</p>
+<p><small>НАПОМЕНА: Одговорите на оваа порака не се земаат во обзир.</small></p>
